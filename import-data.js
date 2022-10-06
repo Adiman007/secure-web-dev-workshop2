@@ -34,4 +34,4 @@ await premierLocation.save()
 */
 
 mongoose.connect(process.env.MONGO_URI).then(() => {console.log('Connected ! ')})
-console.log('Toto')
+console.log('Titi')
