@@ -1,8 +1,8 @@
 import * as dotenv from "dotenv"
 dotenv.config()
-console.log(process.env.MONGO_URI)
 
-import mongoose, {Model} from 'mongoose';
+
+import mongoose, {model} from 'mongoose';
 const { Schema } = mongoose;
 
 
@@ -27,11 +27,10 @@ const schemaLocations = new Schema(
     }
 )
 
-/*
-const Locations = new Model('Locations', schemaLocations)
-const premierLocation = new Location({filmType: 'Horror'})
+
+const Locations = mongoose.model('Locations', schemaLocations)
+const premierLocation = new Locations({filmType: 'Horror'})
 await premierLocation.save()
-*/
+
 
 mongoose.connect(process.env.MONGO_URI).then(() => {console.log('Connected ! ')})
-console.log('Titi')
