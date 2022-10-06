@@ -26,11 +26,13 @@ const schemaLocations = new Schema(
         "year": Number,
     }
 )
+async function main(){
+    await mongoose.connect(process.env.MONGO_URI)
+    console.log("Connected")
 
+    const Location = mongoose.model('Locations', schemaLocations)
+    const premierLocation = new Location({filmType: 'Horror'})
+    await premierLocation.save()
+}
 
-const Locations = mongoose.model('Locations', schemaLocations)
-const premierLocation = new Locations({filmType: 'Horror'})
-await premierLocation.save()
-
-
-mongoose.connect(process.env.MONGO_URI).then(() => {console.log('Connected ! ')})
+main()
